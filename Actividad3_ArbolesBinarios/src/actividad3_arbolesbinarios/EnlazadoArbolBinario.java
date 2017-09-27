@@ -90,7 +90,7 @@ public class EnlazadoArbolBinario<E> implements ArbolBinario<E> {
         if (hi == null) {
             throw new NullPointerException();
         }
-        nodoRaiz.setIzq((NodoBinario<E>) hi);
+        nodoRaiz.setIzq(((EnlazadoArbolBinario<E>) hi).nodoRaiz);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class EnlazadoArbolBinario<E> implements ArbolBinario<E> {
         if (hd == null) {
             throw new NullPointerException();
         }
-        nodoRaiz.setIzq((NodoBinario<E>) hd);
+        nodoRaiz.setIzq(((EnlazadoArbolBinario<E>) hd).nodoRaiz);
 
     }
 
