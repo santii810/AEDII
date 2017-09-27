@@ -78,31 +78,42 @@ public class Calcula {
         if (pos == array.length) {
             return toret;
         } else {
-            toret[array.length-1-pos] = array[pos];
+            toret[array.length - 1 - pos] = array[pos];
             return voltearArray(array, toret, ++pos);
         }
     }
 
-    static int busquedaBinaria(int[] enteros, int pos, int buscado) {
-        if (enteros[pos] == buscado) {
-            return pos;
+    static int busquedaBinaria(float[] array, int menor, int mayor, float buscado) {
+        int medio = (mayor + menor) / 2;
+        if (menor > mayor) {
+            return -1;
+        } else if (array[medio] == buscado) {
+            return medio;
+        } else if (array[medio] < buscado) {
+            return busquedaBinaria(array, medio + 1, mayor, buscado);
         } else {
-            if (pos == 0 || pos == enteros.length - 1) {
-                return -1;
-            }
-            if (enteros[pos] < buscado) {
-                pos += (enteros.length - pos) / 2;
-            } else {
-                pos -= (enteros.length - pos) / 2;
-            }
-            return busquedaBinaria(enteros, pos, buscado);
+            return busquedaBinaria(array, menor, medio - 1, buscado);
         }
+//
+//        if (array[pos] == buscado) {
+//            return pos;
+//        } else {
+//            if (pos == 0 || pos == array.length - 1) {
+//                return -1;
+//            }
+//            if (array[pos] < buscado) {
+//                pos += (array.length - pos) / 2;
+//            } else {
+//                pos -= pos / 2;
+//            }
+//            return busquedaBinaria(array, pos, buscado);
+//        }
     }
 
     static Stack<Integer> copiarPila(Stack<Integer> pila, Stack<Integer> toret, int pos) {
         if (pos == pila.size()) {
-        return toret;
-        }else{
+            return toret;
+        } else {
             toret.push(pila.get(pos));
             return copiarPila(pila, toret, ++pos);
         }
