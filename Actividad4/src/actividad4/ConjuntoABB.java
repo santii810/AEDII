@@ -85,8 +85,7 @@ class ConjuntoABB<T extends Comparable<T>> implements Conjunto<T> {
     @Override
     public Conjunto<T> diferencia(Conjunto<T> conj) {
         Conjunto<T> toret = new ConjuntoABB<T>();
-        recorrerDif(toret, ((ConjuntoABB<T>) conj).conjunto, conjunto);
-        recorrerDif(toret, conjunto,((ConjuntoABB<T>) conj).conjunto);
+        recorrerDif(toret, conjunto, ((ConjuntoABB<T>) conj).conjunto);
         return toret;
     }
 
@@ -99,26 +98,23 @@ class ConjuntoABB<T extends Comparable<T>> implements Conjunto<T> {
     }
 
     private void recorrerIntersec(Conjunto<T> toret, ArbolBusqueda<T> a, ArbolBusqueda<T> b) {
-        if (a.esVacio() || b.esVacio()) {
-        } else {
+        if (!a.esVacio() && !b.esVacio()) {
             if (a.buscar(b.raiz())) {
                 toret.inserta(b.raiz());
             }
             recorrerIntersec(toret, a, b.hijoDer());
             recorrerIntersec(toret, a, b.hijoIzq());
         }
-
     }
 
     private void recorrerDif(Conjunto<T> toret, ArbolBusqueda<T> a, ArbolBusqueda<T> b) {
-        if (a.esVacio() || b.esVacio()) {
-        } else {
-            if (!a.buscar(b.raiz()) && !toret.pertenece(b.raiz())) {
-                toret.inserta(b.raiz());
+        if (!a.esVacio() && !b.esVacio()) {
+            if (!b.buscar(a.raiz())) {
+                toret.inserta(a.raiz());
             }
-            recorrerIntersec(toret, a, b.hijoDer());
-            recorrerIntersec(toret, a, b.hijoIzq());
-            
+            recorrerDif(toret, a.hijoDer(), b);
+            recorrerDif(toret, a.hijoIzq(), b);
         }
     }
+
 }
