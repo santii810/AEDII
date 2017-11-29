@@ -3,11 +3,6 @@ package actividad8;
 
 import static actividad8.Actividad8.*;
 import grafo.*;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -118,27 +113,27 @@ public class Actividad8Test {
         assertEquals(expResult, result);   
     }
 
-//    /**
-//     * Test of esArborescencia method, of class SolActividad8.
-//     */
-//    @Test
-//    public void testEsArborescencia() {
-//        System.out.println("esArborescencia");
-//        Vertice<String> expResult = v2;
-//        Vertice<String> result = esArborescencia(g);
-//        assertEquals(expResult, result);   
-//    }
-//    @Test
-//    public void testNoEsArborescencia() {
-//        g.eliminarArco(new Arco<>(v4, v2, 120));
-//	g.eliminarArco(new Arco<>(v4, v3, 120));
-//        g.eliminarArco(new Arco<>(v2, v3, 100));
-//        g.eliminarArco(new Arco<>(v2, v1, 10));
-//        System.out.println("noEsArborescencia");
-//        Vertice<String> expResult = null;
-//        Vertice<String> result = esArborescencia(g);
-//        assertEquals(expResult, result);   
-//    }
+    /**
+     * Test of esArborescencia method, of class SolActividad8.
+     */
+    @Test
+    public void testEsArborescencia() {
+        System.out.println("esArborescencia");
+        Vertice<String> expResult = v2;
+        Vertice<String> result = esArborescencia(g);
+        assertEquals(expResult, result);   
+    }
+    @Test
+    public void testNoEsArborescencia() {
+        g.eliminarArco(new Arco<>(v4, v2, 120));
+	g.eliminarArco(new Arco<>(v4, v3, 120));
+        g.eliminarArco(new Arco<>(v2, v3, 100));
+        g.eliminarArco(new Arco<>(v2, v1, 10));
+        System.out.println("noEsArborescencia");
+        Vertice<String> expResult = null;
+        Vertice<String> result = esArborescencia(g);
+        assertEquals(expResult, result);   
+    }
 
     
     
